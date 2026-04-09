@@ -1,37 +1,410 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html class="dark" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Santiago Minotta</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#690005",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#d4c5ab",
+                        "on-tertiary": "#003640",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003732",
+                        "tertiary-fixed-dim": "#00d9fc",
+                        "surface-variant": "#353534",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-container": "#004c46",
+                        "background": "#131313",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#61f9e9",
+                        "inverse-primary": "#795900",
+                        "tertiary-fixed": "#aaedff",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#005d6d",
+                        "outline-variant": "#504532",
+                        "error": "#ffb4ab",
+                        "surface": "#131313",
+                        "tertiary": "#b4efff",
+                        "primary": "#ffe2ab",
+                        "primary-fixed-dim": "#fbbc00",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-container": "#ffbf00",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#261a00",
+                        "secondary-fixed-dim": "#3adccc",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#005049",
+                        "secondary-container": "#00c6b6",
+                        "surface-dim": "#131313",
+                        "surface-bright": "#393939",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "outline": "#9c8f78",
+                        "on-primary": "#402d00",
+                        "secondary": "#43e2d2",
+                        "surface-tint": "#fbbc00",
+                        "on-tertiary-fixed": "#001f26",
+                        "tertiary-container": "#04dcff",
+                        "primary-fixed": "#ffdfa0",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary-fixed": "#00201d",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-container": "#6d5000"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "0px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #131313;
+            background-image: radial-gradient(rgba(255, 191, 0, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(67, 226, 210, 0.05);
+            position: absolute;
+            z-index: 10;
+        }
+    </style>
 </head>
-<body>
-    <header class="header">
-        <div class="header__social-links">
-            <a href="https://github.com/sminotta" class="social-link social-link--github">
-                <i class="fab fa-github"></i>
+
+<body class="font-body text-on-surface antialiased">
+    <!-- TopNavBar -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-[#131313]/70 backdrop-blur-md border-b border-[#ffe2ab]/15">
+        <div class="text-xl font-bold tracking-tighter text-[#ffe2ab] font-headline">SANTIAGO</div>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="text-[#ffbf00] font-bold border-b border-[#ffbf00] pb-1 font-label text-xs tracking-widest uppercase"
+                href="#hero">HERO</a>
+            <a class="text-gray-400 font-medium hover:text-[#ffe2ab] transition-colors font-label text-xs tracking-widest uppercase hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)]"
+                href="#about">ABOUT</a>
+            <a class="text-gray-400 font-medium hover:text-[#ffe2ab] transition-colors font-label text-xs tracking-widest uppercase hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)]"
+                href="#skills">SKILLS</a>
+            <a class="text-gray-400 font-medium hover:text-[#ffe2ab] transition-colors font-label text-xs tracking-widest uppercase hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)]"
+                href="#projects">PROJECTS</a>
+            <a class="text-gray-400 font-medium hover:text-[#ffe2ab] transition-colors font-label text-xs tracking-widest uppercase hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)]"
+                href="#contact">CONTACT</a>
+        </div>
+        <div class="flex gap-4 items-center">
+            <i
+                class="material-symbols-outlined text-[#ffbf00] cursor-pointer hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)] fa-brands fa-github"></i>
+            <i
+                class="material-symbols-outlined text-[#ffbf00] cursor-pointer hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)] fa-brands fa-linkedin"></i>
+        </div>
+    </nav>
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section
+            class="relative min-height-[819px] px-8 py-20 flex flex-col justify-center border-b border-outline-variant/15"
+            id="hero">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+                <div class="md:col-span-8">
+                    <p class="font-label text-gray-700 text-sm tracking-[0.3em] mb-4">// INITIALIZING SESSION_01</p>
+                    <h1 class="font-headline text-7xl md:text-9xl font-extrabold leading-none tracking-tighter mb-8">
+                        SANTIAGO <span class="text-primary-container block">MINOTTA</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed">
+                        Junior Web Developer crafting high-performance digital architectures with a focus on structural
+                        integrity and user-centric design.
+                    </p>
+                </div>
+                <div class="md:col-span-4 flex flex-col items-end gap-6">
+                    <div class="flex gap-4">
+                        <a class="p-3 border border-outline-variant/40 hover:bg-primary-container/10 transition-all"
+                            href="#">
+                            <i class="material-symbols-outlined text-primary fa-brands fa-github"></i>
+                        </a>
+                        <a class="p-3 border border-outline-variant/40 hover:bg-primary-container/10 transition-all"
+                            href="#">
+                            <i class="material-symbols-outlined text-primary fa-brands fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <button
+                        class="bg-primary-container text-on-primary-container px-8 py-4 font-label font-bold tracking-widest uppercase flex items-center gap-3 hover:drop-shadow-[0_0_15px_rgba(255,191,0,0.4)] transition-all">
+                        DOWNLOAD CV
+                        <span class="material-symbols-outlined">download</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section class="px-8 py-24 bg-surface-container-lowest border-b border-outline-variant/15" id="about">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <p class="font-label text-gray-700 text-xs tracking-widest mb-2">// BIOS_DATA</p>
+                    <h2 class="font-headline text-4xl font-bold uppercase tracking-tight">Profile</h2>
+                </div>
+                <div class="md:col-span-8">
+                    <div class="relative p-8 border-l border-primary/30 bg-surface-container-low">
+                        <p class="text-xl text-on-surface-variant leading-relaxed mb-6">
+                            I am a Junior Web Developer with a foundation in HTML, CSS, JavaScript, and basic React, currently completing a Web Developer Diploma at Tamwood Careers and holding a degree in Multimedia Engineering.
+                        </p>
+                        <p class="text-xl text-on-surface-variant leading-relaxed">
+                            I have experience building a course hub platform, working on both frontend structure and backend logic, and I am focused on developing clean, well-structured code while continuing to grow toward a full-stack role.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section class="px-8 py-24 border-b border-outline-variant/15" id="skills">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
+                    <h2 class="font-headline text-5xl font-bold uppercase tracking-tight">Technical Stack</h2>
+                    <p class="font-label text-gray-700 text-sm tracking-widest">// ARCHIVE_v2.04</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/15">
+                    <!-- Frontend -->
+                    <div class="bg-background p-10">
+                        <div class="flex items-center gap-3 mb-8">
+                            <span class="material-symbols-outlined text-secondary">desktop_windows</span>
+                            <h3 class="font-label text-lg font-bold tracking-widest uppercase">Frontend</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">HTML5
+                                / CSS3</span>
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">JavaScript</span>
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">React.js</span>
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">Bootstrap</span>
+                        </div>
+                    </div>
+                    <!-- Backend -->
+                    <div class="bg-background p-10">
+                        <div class="flex items-center gap-3 mb-8">
+                            <span class="material-symbols-outlined text-secondary">database</span>
+                            <h3 class="font-label text-lg font-bold tracking-widest uppercase">Backend</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">Django</span>
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">MySQL</span>
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">PHP</span>
+                        </div>
+                    </div>
+                    <!-- Tools -->
+                    <div class="bg-background p-10">
+                        <div class="flex items-center gap-3 mb-8">
+                            <span class="material-symbols-outlined text-secondary">architecture</span>
+                            <h3 class="font-label text-lg font-bold tracking-widest uppercase">Tools</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">Git
+                                / GitHub</span>
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">Postman</span>
+                            <span
+                                class="px-3 py-1 border border-outline-variant/40 font-label text-xs text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors uppercase">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section class="px-8 py-24 bg-surface-container-lowest" id="projects">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center gap-6 mb-16">
+                    <h2 class="font-headline text-5xl font-bold uppercase tracking-tight">Selected Projects</h2>
+                    <div class="h-px grow bg-outline-variant/15"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Project 1: Course Hub -->
+                    <div
+                        class="group relative bg-surface-container p-1 border border-outline-variant/10 hover:border-primary/40 transition-all duration-500">
+                        <div class="relative aspect-video overflow-hidden mb-8">
+                            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                data-alt="Modern dark dashboard interface for an online learning platform with course cards, progress charts, and glassmorphism elements"
+                                src="./resources/learnify_logo.jpg" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60">
+                            </div>
+                        </div>
+                        <div class="px-8 pb-10">
+                            <h3 class="font-headline text-3xl font-bold mb-4 uppercase tracking-tight text-primary">
+                                Learnify (Frontend)</h3>
+                            <div class="space-y-4 mb-8">
+                                <!-- <p class="text-sm font-label text-secondary uppercase tracking-[0.2em]">01_Problem</p> -->
+                                <p class="text-on-surface-variant text-sm">A responsive frontend “CourseHub” interface built with HTML, CSS, and JavaScript, focused on delivering a unified course browsing experience through structured layouts, intuitive navigation, and dynamic UI components that simulate real-world e-learning interactions.</p>
+                                <!-- <p class="text-sm font-label text-secondary uppercase tracking-[0.2em]">02_Solution</p> -->
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-10">
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">React.js</span>
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">Figma</span>
+                                <!-- <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">PostgreSQL</span> -->
+                            </div>
+                            <div class="flex gap-6">
+                                <a class="flex items-center gap-2 text-primary font-label text-xs font-bold tracking-widest hover:underline uppercase"
+                                    href="https://frolicking-shortbread-798dd6.netlify.app/" target="_blank">
+                                    <span class="material-symbols-outlined text-sm">open_in_new</span> Live Demo
+                                </a>
+                                <a class="flex items-center gap-2 text-on-surface-variant font-label text-xs font-bold tracking-widest hover:text-primary transition-colors uppercase"
+                                    href="https://github.com/EunsuhJeon/learnify-coursehub-app" target="_blank">
+                                    <span class="material-symbols-outlined text-sm">terminal</span> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2: Terminal Task Manager -->
+                    <div
+                        class="group relative bg-surface-container p-1 border border-outline-variant/10 hover:border-primary/40 transition-all duration-500">
+                        <div class="relative aspect-video overflow-hidden mb-8">
+                            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                data-alt="Minimalist code editor interface showing a dark theme task management application with cyan accents and monospaced typography"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY_5bhAKVnz76F-HbKiUVJgxnEfryHnwRyRCLwst2KAKJ78u98-A3ht5TCksLLFuppn--fgAlk7Sa07F1QfzzFn_kQzvLd_ukyfjSGupuUamNJa6YeVeibDduQQRbyS1bnOSYFmEg8gtBGDiZEnB0lCFd3mePgPOFG2TEOjQYAgJWXKp4Brhlq3OUftA10hPTENH829EFuVh0JMxpwV3c7OaFG7Hj-vRyHWeU51FJooFvl83jeiDrR6dUqHTrplPqz_Ie2VVbumg" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60">
+                            </div>
+                        </div>
+                        <div class="px-8 pb-10">
+                            <h3 class="font-headline text-3xl font-bold mb-4 uppercase tracking-tight text-primary">
+                                Learnify (Backend)</h3>
+                            <div class="space-y-4 mb-8">
+                                <p class="text-on-surface-variant text-sm">A PHP-based backend for the Learnify platform leveraging relational databases (SQL) to manage courses, users, and interactions, with RESTful endpoints tested via Postman to ensure reliable request handling, data validation, and structured client-server communication.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-10">
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">PHP</span>
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">SQL</span>
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">POSTMAN</span>
+                            </div>
+                            <div class="flex gap-6">
+                                <!-- <a class="flex items-center gap-2 text-primary font-label text-xs font-bold tracking-widest hover:underline uppercase"
+                                    href="#">
+                                    <span class="material-symbols-outlined text-sm">open_in_new</span> Live Demo
+                                </a> -->
+                                <a class="flex items-center gap-2 text-on-surface-variant font-label text-xs font-bold tracking-widest hover:text-primary transition-colors uppercase"
+                                    href="https://github.com/EunsuhJeon/learnify-coursehub-server" target="_blank">
+                                    <span class="material-symbols-outlined text-sm">terminal</span> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Terminal Task Manager -->
+                    <div
+                        class="group relative bg-surface-container p-1 border border-outline-variant/10 hover:border-primary/40 transition-all duration-500">
+                        <div class="relative aspect-video overflow-hidden mb-8">
+                            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                data-alt="Minimalist code editor interface showing a dark theme task management application with cyan accents and monospaced typography"
+                                src="./resources/image.png" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60">
+                            </div>
+                        </div>
+                        <div class="px-8 pb-10">
+                            <h3 class="font-headline text-3xl font-bold mb-4 uppercase tracking-tight text-primary">
+                                Trickards</h3>
+                            <div class="space-y-4 mb-8">
+                                <p class="text-on-surface-variant text-sm">An interactive browser-based memory game built with HTML, CSS, and JavaScript, incorporating deceptive elements such as false cards designed to mislead player recall, alongside dynamic state management, attempt tracking, and responsive UI feedback to enhance difficulty and replayability.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-10">
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">HTML</span>
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">CSS</span>
+                                <span
+                                    class="text-[10px] font-label px-2 py-1 bg-surface-variant text-on-surface-variant uppercase">JavaScript</span>
+                            </div>
+                            <div class="flex gap-6">
+                                <!-- <a class="flex items-center gap-2 text-primary font-label text-xs font-bold tracking-widest hover:underline uppercase"
+                                    href="#">
+                                    <span class="material-symbols-outlined text-sm">open_in_new</span> Live Demo
+                                </a> -->
+                                <a class="flex items-center gap-2 text-on-surface-variant font-label text-xs font-bold tracking-widest hover:text-primary transition-colors uppercase"
+                                    href="https://github.com/DiegoEstrada07/js-mini-app-1" target="_blank">
+                                    <span class="material-symbols-outlined text-sm">terminal</span> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section class="px-8 py-32 border-t border-outline-variant/15" id="contact">
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="font-label text-gray-700 text-sm tracking-[0.4em] mb-6 uppercase">// ESTABLISH_CONNECTION</p>
+                <h2 class="font-headline text-5xl md:text-7xl font-extrabold mb-12 tracking-tighter">GET IN
+                    <span class="text-primary-container">TOUCH</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="p-8 border border-outline-variant/15 hover:bg-surface-container-low transition-all">
+                        <span class="material-symbols-outlined text-primary mb-4 text-3xl">alternate_email</span>
+                        <p class="font-label text-xs text-secondary uppercase tracking-widest mb-2">Protocol: Email</p>
+                        <p class="text-on-surface font-medium">hello@santiago.dev</p>
+                    </div>
+                    <div class="p-8 border border-outline-variant/15 hover:bg-surface-container-low transition-all">
+                        <span class="material-symbols-outlined text-primary mb-4 text-3xl">terminal</span>
+                        <p class="font-label text-xs text-secondary uppercase tracking-widest mb-2">Protocol: GitHub</p>
+                        <a class="text-on-surface font-medium" href="https://github.com/sminotta" target="_blank">github.com/sminotta</a>
+                    </div>
+                    <div class="p-8 border border-outline-variant/15 hover:bg-surface-container-low transition-all">
+                        <span class="material-symbols-outlined text-primary mb-4 text-3xl">hub</span>
+                        <p class="font-label text-xs text-secondary uppercase tracking-widest mb-2">Protocol: LinkedIn
+                        </p>
+                        <a class="text-on-surface font-medium" href="https://www.linkedin.com/in/hsminottav" target="_blank">linkedin.com/in/hsminottav</a>
+                    </div>
+                <!-- </div>
+                <a class="inline-flex items-center gap-4 bg-primary-container text-on-primary-container px-12 py-6 font-headline font-extrabold text-xl tracking-tight hover:drop-shadow-[0_0_25px_rgba(255,191,0,0.4)] transition-all"
+                    href="mailto:hello@santiago.dev">
+                    INITIATE CONTACT
+                    <span class="material-symbols-outlined">send</span>
+                </a> -->
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-[#0e0e0e] border-t border-[#43e2d2]/15">
+        <div class="text-lg font-bold text-[#ffe2ab] font-headline tracking-tighter">SANTIAGO</div>
+        <div class="text-gray-500 font-label text-xs tracking-widest uppercase">
+            © 2024 SANTIAGO // JUNIOR WEB DEVELOPER
+        </div>
+        <div class="flex gap-8">
+            <a href="https://github.com/sminotta" target="_blank" class="material-symbols-outlined text-[#ffbf00] cursor-pointer hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)]">
+                <i class="fa-brands fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/hsminottav/" class="social-link social-link--linkedin">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:example@example.com" class="social-link social-link--email">
-                <i class="fas fa-envelope"></i>
+            <a href="https://www.linkedin.com/in/hsminottav" target="_blank" class="material-symbols-outlined text-[#ffbf00] cursor-pointer hover:drop-shadow-[0_0_8px_rgba(255,191,0,0.4)]">
+                <i class="fa-brands fa-linkedin"></i>
             </a>
         </div>
-
-        <nav class="header__navigation">
-            <ul class="navigation__list">
-                <li class="navigation__item"><a href="#" class="navigation__link">Inicio</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link">About me</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link">Skills</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
+    </footer>
 </body>
+
 </html>
